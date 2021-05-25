@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -18,6 +19,7 @@ import java.util.UUID;
 @Table(name = "Product")
 public class Product {
     @Id
+    @Type(type="org.hibernate.type.UUIDCharType")
     private UUID id = UUID.randomUUID();
     private String productName;
     private int quantity;
