@@ -8,4 +8,5 @@ import java.util.UUID;
 public interface ProductService {
     List<Product> getAll();
     Product getById(UUID id);
+    Product save(Product product);
 }

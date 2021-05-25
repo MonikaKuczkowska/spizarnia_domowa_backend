@@ -23,4 +23,9 @@ public class ProductController {
     public Product getById(@RequestParam UUID id) {
         return productService.getById(id);
     }
+
+    @PostMapping
+    public Product addProduct(@RequestBody Product product) {
+        return productService.save(product);
+    }
 }
