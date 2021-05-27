@@ -18,4 +18,9 @@ public class ShoppingListServiceImpl implements ShoppingListService {
     public List<ShoppingList> getAll() {
         return shoppingListRepository.findAll();
     }
+
+    @Override
+    public ShoppingList save(ShoppingList shoppingList) {
+        return shoppingListRepository.save(shoppingList);
+    }
 }

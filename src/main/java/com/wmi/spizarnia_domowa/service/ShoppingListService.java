@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface ShoppingListService {
     List<ShoppingList> getAll();
+    ShoppingList save(ShoppingList shoppingList);
 }

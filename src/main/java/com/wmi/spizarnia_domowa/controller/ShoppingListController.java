@@ -17,4 +17,9 @@ public class ShoppingListController {
     public List<ShoppingList> getAll() {
         return shoppingListService.getAll();
     }
+
+    @PostMapping
+    public ShoppingList addProductToShoppingList(@RequestBody ShoppingList shoppingList) {
+        return shoppingListService.save(shoppingList);
+    }
 }
