@@ -15,6 +15,7 @@ public class ShoppingListController {
 
     @GetMapping("/all")
     public List<ShoppingList> getAll() {
+        System.out.println(shoppingListService.getAll().size());
         return shoppingListService.getAll();
     }
 

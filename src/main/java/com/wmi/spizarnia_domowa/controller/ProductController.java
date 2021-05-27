@@ -34,4 +34,9 @@ public class ProductController {
     public Product addAttribute(@PathVariable UUID id, @RequestParam String attributeName) {
         return productService.addAttribute(id, attributeName);
     }
+
+    @PutMapping("/all/{id}")
+    public void autoPurchase(@PathVariable UUID id) {
+        productService.decrementQuantity(id);
+    }
 }

@@ -10,6 +10,6 @@ public interface ProductService {
     List<Product> getAll();
     Product getById(UUID id);
     Product save(Product product);
-
     Product addAttribute(UUID id, String attributeName);
+    void decrementQuantity(UUID id);
 }

@@ -2,9 +2,11 @@ package com.wmi.spizarnia_domowa.serviceImpl;
 
 import com.wmi.spizarnia_domowa.model.Attribute;
 import com.wmi.spizarnia_domowa.model.Product;
+import com.wmi.spizarnia_domowa.model.ShoppingList;
 import com.wmi.spizarnia_domowa.repository.ProductRepository;
 import com.wmi.spizarnia_domowa.service.AttributeService;
 import com.wmi.spizarnia_domowa.service.ProductService;
+import com.wmi.spizarnia_domowa.service.ShoppingListService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,6 +19,7 @@ import java.util.UUID;
 public class ProductServiceImpl implements ProductService {
     private final ProductRepository productRepository;
     private final AttributeService attributeService;
+    private final ShoppingListService shoppingListService;
 
     @Override
     public List<Product> getAll() {
@@ -42,5 +45,25 @@ public class ProductServiceImpl implements ProductService {
         list.add(attribute);
         product.setAttributeList(list);
         return productRepository.save(product);
+    }
+
+    @Override
+    public void decrementQuantity(UUID id) {
+        Product product = getById(id);
+        product.setQuantity(product.getQuantity() - 1);
+        save(product);
+        isUnderCountQuantity(id);
+    }
+
+    private void isUnderCountQuantity(UUID id) {
+        Product product = getById(id);
+        if (product.isAutoPurchase()) {
+            if (product.getQuantity() <= product.getAutoPurchaseCount()) {
+                ShoppingList shoppingList = new  ShoppingList();
+                shoppingList.setQuantityToBuy(1);
+                shoppingList.setProduct(product);
+                shoppingListService.save(shoppingList);
+            }
+        }
     }
 }
