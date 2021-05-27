@@ -1,5 +1,6 @@
 package com.wmi.spizarnia_domowa.controller;
 
+import com.wmi.spizarnia_domowa.model.Attribute;
 import com.wmi.spizarnia_domowa.model.Product;
 import com.wmi.spizarnia_domowa.service.ProductService;
 import lombok.AllArgsConstructor;
@@ -27,5 +28,10 @@ public class ProductController {
     @PostMapping
     public Product addProduct(@RequestBody Product product) {
         return productService.save(product);
+    }
+
+    @PutMapping("/{id}")
+    public Product addAttribute(@PathVariable UUID id, @RequestParam String attributeName) {
+        return productService.addAttribute(id, attributeName);
     }
 }

@@ -5,11 +5,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.Type;
+import org.springframework.lang.Nullable;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -33,4 +32,7 @@ public class Product {
     private CategoryProduct categoryProduct;
     @ManyToOne
     private CategoryShopping categoryShopping;
+    @OneToMany
+    @Nullable
+    private List<Attribute> attributeList;
 }
