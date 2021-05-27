@@ -31,4 +31,6 @@ public class Product {
     private Measure measure;
     @ManyToOne
     private CategoryProduct categoryProduct;
+    @ManyToOne
+    private CategoryShopping categoryShopping;
 }
