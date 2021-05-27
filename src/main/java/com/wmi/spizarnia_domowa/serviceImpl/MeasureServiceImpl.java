@@ -1,11 +1,8 @@
 package com.wmi.spizarnia_domowa.serviceImpl;
 
 import com.wmi.spizarnia_domowa.model.Measure;
-import com.wmi.spizarnia_domowa.model.Product;
 import com.wmi.spizarnia_domowa.repository.MeasureRepository;
-import com.wmi.spizarnia_domowa.repository.ProductRepository;
 import com.wmi.spizarnia_domowa.service.MeasureService;
-import com.wmi.spizarnia_domowa.service.ProductService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 

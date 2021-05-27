@@ -16,8 +16,8 @@ import java.util.UUID;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "Measure")
-public class Measure {
+@Table(name = "Category_Product")
+public class CategoryProduct {
     @Id
     @Type(type="org.hibernate.type.UUIDCharType")
     private UUID id = UUID.randomUUID();

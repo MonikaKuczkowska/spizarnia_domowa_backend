@@ -29,4 +29,6 @@ public class Product {
 
     @ManyToOne
     private Measure measure;
+    @ManyToOne
+    private CategoryProduct categoryProduct;
 }
