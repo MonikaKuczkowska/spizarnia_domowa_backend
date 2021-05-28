@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/shopping-list")
@@ -15,7 +16,6 @@ public class ShoppingListController {
 
     @GetMapping("/all")
     public List<ShoppingList> getAll() {
-        System.out.println(shoppingListService.getAll().size());
         return shoppingListService.getAll();
     }
 
@@ -23,4 +23,10 @@ public class ShoppingListController {
     public ShoppingList addProductToShoppingList(@RequestBody ShoppingList shoppingList) {
         return shoppingListService.save(shoppingList);
     }
+
+    @PostMapping("/buy/{id}")
+    public void shoppingSuccess(@RequestParam int quantity, @PathVariable UUID id) {
+        shoppingListService.productUpdate(id, quantity);
+    }
+
 }
