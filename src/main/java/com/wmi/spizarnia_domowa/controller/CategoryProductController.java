@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/category-product")
 @AllArgsConstructor
 public class CategoryProductController {
