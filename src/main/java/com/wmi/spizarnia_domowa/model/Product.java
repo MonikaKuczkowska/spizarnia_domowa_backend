@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.Type;
 import org.springframework.lang.Nullable;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import javax.persistence.*;
 import java.util.List;
@@ -14,6 +15,7 @@ import java.util.UUID;
 @Entity
 @Getter
 @Setter
+@CrossOrigin
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "Product")
