@@ -11,6 +11,7 @@ import java.util.UUID;
 
 @RestController
 @CrossOrigin
+@ResponseBody
 @RequestMapping("/products")
 @AllArgsConstructor
 public class ProductController {

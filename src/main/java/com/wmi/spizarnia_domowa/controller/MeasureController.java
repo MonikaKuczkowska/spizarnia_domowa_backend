@@ -10,6 +10,7 @@ import java.util.UUID;
 
 @RestController
 @CrossOrigin
+@ResponseBody
 @RequestMapping("/measures")
 @AllArgsConstructor
 public class MeasureController {

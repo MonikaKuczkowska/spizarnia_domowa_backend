@@ -10,6 +10,7 @@ import java.util.UUID;
 
 @RestController
 @CrossOrigin
+@ResponseBody
 @RequestMapping("/shopping-list")
 @AllArgsConstructor
 public class ShoppingListController {
