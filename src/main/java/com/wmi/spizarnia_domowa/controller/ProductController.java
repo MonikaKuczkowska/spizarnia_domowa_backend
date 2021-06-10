@@ -1,6 +1,5 @@
 package com.wmi.spizarnia_domowa.controller;
 
-import com.wmi.spizarnia_domowa.model.Attribute;
 import com.wmi.spizarnia_domowa.model.Product;
 import com.wmi.spizarnia_domowa.service.ProductService;
 import lombok.AllArgsConstructor;
@@ -35,6 +34,11 @@ public class ProductController {
     @PutMapping("/{id}")
     public Product addAttribute(@PathVariable UUID id, @RequestParam String attributeName) {
         return productService.addAttribute(id, attributeName);
+    }
+
+    @DeleteMapping("/{id}")
+    public Product deleteAttribute(@PathVariable UUID id, @RequestParam UUID attributeId) {
+        return productService.deleteAttribute(id, attributeId);
     }
 
     @PutMapping("/all/{id}")

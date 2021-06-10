@@ -6,6 +6,8 @@ import com.wmi.spizarnia_domowa.service.AttributeService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.UUID;
+
 @Service
 @AllArgsConstructor
 public class AttributeServiceImpl implements AttributeService {
@@ -16,5 +18,10 @@ public class AttributeServiceImpl implements AttributeService {
         Attribute attribute = new Attribute();
         attribute.setName(attributeName);
         return attributeRepository.save(attribute);
+    }
+
+    @Override
+    public void delete(UUID id) {
+        attributeRepository.deleteById(id);
     }
 }

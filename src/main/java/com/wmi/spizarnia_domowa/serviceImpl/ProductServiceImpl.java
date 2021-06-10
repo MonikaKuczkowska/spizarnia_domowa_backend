@@ -3,6 +3,7 @@ package com.wmi.spizarnia_domowa.serviceImpl;
 import com.wmi.spizarnia_domowa.model.Attribute;
 import com.wmi.spizarnia_domowa.model.Product;
 import com.wmi.spizarnia_domowa.model.ShoppingList;
+import com.wmi.spizarnia_domowa.repository.AttributeRepository;
 import com.wmi.spizarnia_domowa.repository.ProductRepository;
 import com.wmi.spizarnia_domowa.service.AttributeService;
 import com.wmi.spizarnia_domowa.service.ProductService;
@@ -18,6 +19,7 @@ import java.util.UUID;
 @AllArgsConstructor
 public class ProductServiceImpl implements ProductService {
     private final ProductRepository productRepository;
+    private final AttributeRepository attributeRepository;
     private final AttributeService attributeService;
     private final ShoppingListService shoppingListService;
 
@@ -45,6 +47,18 @@ public class ProductServiceImpl implements ProductService {
         list.add(attribute);
         product.setAttributeList(list);
         return productRepository.save(product);
+    }
+
+    @Transactional
+    @Override
+    public Product deleteAttribute(UUID id, UUID attributeId) {
+        Attribute attribute = attributeRepository.getById(attributeId);
+        attributeService.delete(attributeId);
+        Product product = getById(id);
+        List<Attribute> list = product.getAttributeList();
+        list.remove(attribute);
+        product.setAttributeList(list);
+        return productRepository.getById(id);
     }
 
     @Override
