@@ -28,6 +28,11 @@ public class ShoppingListServiceImpl implements ShoppingListService {
     }
 
     @Override
+    public List<ShoppingList> getAllSortedByCategoryShopping() {
+        return shoppingListRepository.getAllSortedByCategoryShopping();
+    }
+
+    @Override
     public ShoppingList save(ShoppingList shoppingList) {
         return shoppingListRepository.save(shoppingList);
     }

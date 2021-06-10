@@ -21,6 +21,11 @@ public class ShoppingListController {
         return shoppingListService.getAll();
     }
 
+    @GetMapping("/all-sorted-category-shopping")
+    public List<ShoppingList> getAllSortedByCategoryShopping() {
+        return shoppingListService.getAllSortedByCategoryShopping();
+    }
+
     @PostMapping
     public ShoppingList addProductToShoppingList(@RequestBody ShoppingList shoppingList) {
         return shoppingListService.save(shoppingList);

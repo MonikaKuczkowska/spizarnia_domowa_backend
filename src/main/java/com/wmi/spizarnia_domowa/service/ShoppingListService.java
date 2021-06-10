@@ -7,6 +7,7 @@ import java.util.UUID;
 
 public interface ShoppingListService {
     List<ShoppingList> getAll();
+    List<ShoppingList> getAllSortedByCategoryShopping();
     ShoppingList save(ShoppingList shoppingList);
     void productUpdate(UUID id, int quantity);
     void delete(UUID id);
