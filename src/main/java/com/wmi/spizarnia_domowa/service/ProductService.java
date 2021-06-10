@@ -12,5 +12,6 @@ public interface ProductService {
     Product addAttribute(UUID id, String attributeName);
     Product deleteAttribute(UUID id, UUID attributeId);
     Product updateQuantity(UUID id, int quantity);
+    Product updateProduct(Product product);
     void decrementQuantity(UUID id);
 }

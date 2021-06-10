@@ -1,10 +1,7 @@
 package com.wmi.spizarnia_domowa.serviceImpl;
 
-import com.wmi.spizarnia_domowa.model.Attribute;
-import com.wmi.spizarnia_domowa.model.Product;
-import com.wmi.spizarnia_domowa.model.ShoppingList;
-import com.wmi.spizarnia_domowa.repository.AttributeRepository;
-import com.wmi.spizarnia_domowa.repository.ProductRepository;
+import com.wmi.spizarnia_domowa.model.*;
+import com.wmi.spizarnia_domowa.repository.*;
 import com.wmi.spizarnia_domowa.service.AttributeService;
 import com.wmi.spizarnia_domowa.service.ProductService;
 import com.wmi.spizarnia_domowa.service.ShoppingListService;
@@ -71,6 +68,29 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    public Product updateProduct(Product product) {
+        String name = product.getProductName();
+        int quantity = product.getQuantity();
+        int autoPurchaseCount = product.getAutoPurchaseCount();
+        boolean autoPurchase = product.isAutoPurchase();
+        CategoryProduct categoryProduct = product.getCategoryProduct();
+        CategoryShopping categoryShopping = product.getCategoryShopping();
+        Measure measure = product.getMeasure();
+
+        Product productUpdated = getById(product.getId());
+
+        productUpdated.setProductName(name);
+        productUpdated.setCategoryProduct(categoryProduct);
+        productUpdated.setCategoryShopping(categoryShopping);
+        productUpdated.setAutoPurchase(autoPurchase);
+        productUpdated.setAutoPurchaseCount(autoPurchaseCount);
+        productUpdated.setQuantity(quantity);
+        productUpdated.setMeasure(measure);
+
+        return save(productUpdated);
+    }
+
+    @Override
     public void decrementQuantity(UUID id) {
         Product product = getById(id);
         product.setQuantity(product.getQuantity() - 1);
@@ -81,9 +101,9 @@ public class ProductServiceImpl implements ProductService {
     private void isUnderCountQuantity(UUID id) {
         Product product = getById(id);
         if (product.isAutoPurchase()) {
-            if (product.getQuantity() <= product.getAutoPurchaseCount()) {
-                ShoppingList shoppingList = new  ShoppingList();
-                shoppingList.setQuantityToBuy(1);
+            if (product.getQuantity() < product.getAutoPurchaseCount()) {
+                ShoppingList shoppingList = new ShoppingList();
+                shoppingList.setQuantityToBuy(product.getAutoPurchaseCount() - product.getQuantity());
                 shoppingList.setProduct(product);
                 shoppingListService.save(shoppingList);
             }

@@ -54,4 +54,11 @@ public class ProductController {
     public void autoPurchase(@PathVariable UUID id) {
         productService.decrementQuantity(id);
     }
+
+    //Edytowanie całego produktu
+    @PutMapping("/update")
+    public Product updateProduct(@RequestBody Product product) {
+        return productService.updateProduct(product);
+    }
+
 }
