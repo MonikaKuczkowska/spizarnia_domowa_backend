@@ -31,16 +31,25 @@ public class ProductController {
         return productService.save(product);
     }
 
-    @PutMapping("/{id}")
+    //Dodawanie atrybutu
+    @PutMapping("/attribute/{id}")
     public Product addAttribute(@PathVariable UUID id, @RequestParam String attributeName) {
         return productService.addAttribute(id, attributeName);
     }
 
-    @DeleteMapping("/{id}")
+    //Edytowanie ilosci
+    @PutMapping("/quantity/{id}")
+    public Product updateQuantity(@PathVariable UUID id, @RequestParam int quantity) {
+        return productService.updateQuantity(id, quantity);
+    }
+
+    //Usuwanie atrubutu
+    @DeleteMapping("/attribute/{id}")
     public Product deleteAttribute(@PathVariable UUID id, @RequestParam UUID attributeId) {
         return productService.deleteAttribute(id, attributeId);
     }
 
+    //Dekrementacja ilosci produktu
     @PutMapping("/all/{id}")
     public void autoPurchase(@PathVariable UUID id) {
         productService.decrementQuantity(id);

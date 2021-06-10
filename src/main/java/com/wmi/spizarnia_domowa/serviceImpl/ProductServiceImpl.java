@@ -62,6 +62,15 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    public Product updateQuantity(UUID id, int quantity) {
+        Product product = productRepository.getById(id);
+        product.setQuantity(quantity);
+        productRepository.save(product);
+        isUnderCountQuantity(id);
+        return save(product);
+    }
+
+    @Override
     public void decrementQuantity(UUID id) {
         Product product = getById(id);
         product.setQuantity(product.getQuantity() - 1);
