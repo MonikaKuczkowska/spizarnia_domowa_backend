@@ -26,6 +26,11 @@ public class ProductController {
         return productService.getAllWithoutZero();
     }
 
+    @GetMapping("/all-sorted-category-product")
+    public List<Product> getAllSortedByCategoryProduct() {
+        return productService.getAllSortedByCategoryProduct();
+    }
+
     @GetMapping
     public Product getById(@RequestParam UUID id) {
         return productService.getById(id);

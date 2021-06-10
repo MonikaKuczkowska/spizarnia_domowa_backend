@@ -8,6 +8,7 @@ import java.util.UUID;
 public interface ProductService {
     List<Product> getAll();
     List<Product> getAllWithoutZero();
+    List<Product> getAllSortedByCategoryProduct();
     Product getById(UUID id);
     Product save(Product product);
     Product addAttribute(UUID id, String attributeName);

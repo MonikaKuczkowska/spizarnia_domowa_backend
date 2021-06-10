@@ -13,4 +13,7 @@ public interface ProductRepository extends JpaRepository<Product, UUID> {
 
     @Query(value = "select * from product where quantity != 0;", nativeQuery = true)
     List<Product> getAllWithoutZero();
+
+    @Query(value = "select * from product inner join category_product on product.category_product_id = category_product.id order by category_product.name;", nativeQuery = true)
+    List<Product> getAllSortedByCategoryProduct();
 }

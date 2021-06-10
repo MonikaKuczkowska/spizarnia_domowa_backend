@@ -31,6 +31,11 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    public List<Product> getAllSortedByCategoryProduct() {
+        return productRepository.getAllSortedByCategoryProduct();
+    }
+
+    @Override
     public Product getById(UUID id) {
         return productRepository.findById(id).get();
     }
