@@ -9,4 +9,6 @@ public interface ShoppingListService {
     List<ShoppingList> getAll();
     ShoppingList save(ShoppingList shoppingList);
     void productUpdate(UUID id, int quantity);
+    void delete(UUID id);
+
 }

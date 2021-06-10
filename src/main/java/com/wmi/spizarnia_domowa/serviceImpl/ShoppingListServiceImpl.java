@@ -39,10 +39,9 @@ public class ShoppingListServiceImpl implements ShoppingListService {
         product.setQuantity(product.getQuantity() + quantity);
         productService.save(product);
         delete(id);
-
     }
 
-    private void delete(UUID id) {
+    public void delete(UUID id) {
         shoppingListRepository.deleteById(id);
     }
 }

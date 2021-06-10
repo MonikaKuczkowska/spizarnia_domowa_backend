@@ -31,4 +31,8 @@ public class ShoppingListController {
         shoppingListService.productUpdate(id, quantity);
     }
 
+    @DeleteMapping("/{id}")
+    public void deleteProduct(@PathVariable UUID id) {
+        shoppingListService.delete(id);
+    }
 }
