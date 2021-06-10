@@ -26,6 +26,11 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    public List<Product> getAllWithoutZero() {
+        return productRepository.getAllWithoutZero();
+    }
+
+    @Override
     public Product getById(UUID id) {
         return productRepository.findById(id).get();
     }

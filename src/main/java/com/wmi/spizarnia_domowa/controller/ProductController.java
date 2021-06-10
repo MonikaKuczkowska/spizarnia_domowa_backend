@@ -21,6 +21,11 @@ public class ProductController {
         return productService.getAll();
     }
 
+    @GetMapping("/all-no-zero")
+    public List<Product> getAllWithoutZero() {
+        return productService.getAllWithoutZero();
+    }
+
     @GetMapping
     public Product getById(@RequestParam UUID id) {
         return productService.getById(id);
