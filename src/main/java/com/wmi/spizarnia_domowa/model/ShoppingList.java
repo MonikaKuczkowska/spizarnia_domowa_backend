@@ -21,6 +21,8 @@ public class ShoppingList {
     private UUID id = UUID.randomUUID();
     private int quantityToBuy;
 
+    @ManyToOne
+    private Group group;
     @OneToOne
     private Product product;
 }

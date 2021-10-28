@@ -27,6 +27,8 @@ public class Product {
     private boolean autoPurchase;
 
     @ManyToOne
+    private Group group;
+    @ManyToOne
     private Measure measure;
     @ManyToOne
     private CategoryProduct categoryProduct;
