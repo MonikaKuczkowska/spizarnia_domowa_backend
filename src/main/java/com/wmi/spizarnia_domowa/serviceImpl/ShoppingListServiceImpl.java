@@ -51,6 +51,14 @@ public class ShoppingListServiceImpl implements ShoppingListService {
         delete(id);
     }
 
+    @Override
+    public ShoppingList updateQuantity(UUID id, int quantity) {
+        ShoppingList shoppingList = shoppingListRepository.getById(id);
+        shoppingList.setQuantityToBuy(quantity);
+
+        return save(shoppingList);
+    }
+
     public void delete(UUID id) {
         shoppingListRepository.deleteById(id);
     }

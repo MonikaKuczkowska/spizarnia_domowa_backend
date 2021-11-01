@@ -10,5 +10,6 @@ public interface ShoppingListService {
     List<ShoppingList> getAllSortedByCategoryShopping(String code);
     ShoppingList save(ShoppingList shoppingList);
     void productUpdate(UUID id, int quantity);
+    ShoppingList updateQuantity(UUID id, int quantity);
     void delete(UUID id);
 }

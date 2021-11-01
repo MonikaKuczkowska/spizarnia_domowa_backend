@@ -32,8 +32,13 @@ public class ShoppingListController {
     }
 
     @PostMapping("/buy/{id}")
-    public void shoppingSuccess(@RequestParam int quantity, @PathVariable UUID id) {
+    public void shoppingSuccess(@PathVariable UUID id, @RequestParam int quantity) {
         shoppingListService.productUpdate(id, quantity);
+    }
+
+    @PutMapping("/quantity/{id}")
+    public ShoppingList updateQuantity(@PathVariable UUID id, @RequestParam int quantity) {
+        return shoppingListService.updateQuantity(id, quantity);
     }
 
     @DeleteMapping("/{id}")
