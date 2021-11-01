@@ -6,9 +6,9 @@ import java.util.List;
 import java.util.UUID;
 
 public interface ProductService {
-    List<Product> getAll();
-    List<Product> getAllWithoutZero();
-    List<Product> getAllSortedByCategoryProduct();
+    List<Product> getAll(String code);
+    List<Product> getAllWithoutZero(String code);
+    List<Product> getAllSortedByCategoryProduct(String code);
     Product getById(UUID id);
     Product save(Product product);
     Product addAttribute(UUID id, String attributeName);

@@ -17,8 +17,8 @@ public class CategoryProductController {
     private final CategoryProductService categoryProductService;
 
     @GetMapping("/all")
-    public List<CategoryProduct> getAll() {
-        return categoryProductService.getAll();
+    public List<CategoryProduct> getAll(@RequestParam String code) {
+        return categoryProductService.getAll(code);
     }
 
     @GetMapping

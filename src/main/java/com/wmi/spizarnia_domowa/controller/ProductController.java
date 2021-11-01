@@ -17,18 +17,18 @@ public class ProductController {
     private final ProductService productService;
 
     @GetMapping("/all")
-    public List<Product> getAll() {
-        return productService.getAll();
+    public List<Product> getAll(@RequestParam String code) {
+        return productService.getAll(code);
     }
 
     @GetMapping("/all-no-zero")
-    public List<Product> getAllWithoutZero() {
-        return productService.getAllWithoutZero();
+    public List<Product> getAllWithoutZero(@RequestParam String code) {
+        return productService.getAllWithoutZero(code);
     }
 
     @GetMapping("/all-sorted-category-product")
-    public List<Product> getAllSortedByCategoryProduct() {
-        return productService.getAllSortedByCategoryProduct();
+    public List<Product> getAllSortedByCategoryProduct(@RequestParam String code) {
+        return productService.getAllSortedByCategoryProduct(code);
     }
 
     @GetMapping
@@ -41,31 +41,26 @@ public class ProductController {
         return productService.save(product);
     }
 
-    //Dodawanie atrybutu
     @PutMapping("/attribute/{id}")
     public Product addAttribute(@PathVariable UUID id, @RequestParam String attributeName) {
         return productService.addAttribute(id, attributeName);
     }
 
-    //Edytowanie ilosci
     @PutMapping("/quantity/{id}")
     public Product updateQuantity(@PathVariable UUID id, @RequestParam int quantity) {
         return productService.updateQuantity(id, quantity);
     }
 
-    //Usuwanie atrubutu
     @DeleteMapping("/attribute/{id}")
     public Product deleteAttribute(@PathVariable UUID id, @RequestParam UUID attributeId) {
         return productService.deleteAttribute(id, attributeId);
     }
 
-    //Dekrementacja ilosci produktu
     @PutMapping("/all/{id}")
     public void autoPurchase(@PathVariable UUID id) {
         productService.decrementQuantity(id);
     }
 
-    //Edytowanie całego produktu
     @PutMapping("/update")
     public Product updateProduct(@RequestBody Product product) {
         return productService.updateProduct(product);

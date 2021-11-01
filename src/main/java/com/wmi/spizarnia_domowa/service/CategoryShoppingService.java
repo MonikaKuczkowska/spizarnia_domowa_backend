@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.UUID;
 
 public interface CategoryShoppingService {
-    List<CategoryShopping> getAll();
+    List<CategoryShopping> getAll(String code);
     CategoryShopping getById(UUID id);
     CategoryShopping save(CategoryShopping categoryShopping);
 }

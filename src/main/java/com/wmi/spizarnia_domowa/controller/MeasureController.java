@@ -17,8 +17,8 @@ public class MeasureController {
     private final MeasureService measureService;
 
     @GetMapping("/all")
-    public List<Measure> getAll() {
-        return measureService.getAll();
+    public List<Measure> getAll(@RequestParam String code) {
+        return measureService.getAll(code);
     }
 
     @GetMapping

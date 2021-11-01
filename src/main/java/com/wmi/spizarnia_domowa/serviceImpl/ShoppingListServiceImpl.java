@@ -1,7 +1,9 @@
 package com.wmi.spizarnia_domowa.serviceImpl;
 
+import com.wmi.spizarnia_domowa.model.Group;
 import com.wmi.spizarnia_domowa.model.Product;
 import com.wmi.spizarnia_domowa.model.ShoppingList;
+import com.wmi.spizarnia_domowa.repository.GroupRepository;
 import com.wmi.spizarnia_domowa.repository.ShoppingListRepository;
 import com.wmi.spizarnia_domowa.service.ProductService;
 import com.wmi.spizarnia_domowa.service.ShoppingListService;
@@ -16,20 +18,23 @@ import java.util.UUID;
 public class ShoppingListServiceImpl implements ShoppingListService {
     private final ShoppingListRepository shoppingListRepository;
     private final ProductService productService;
+    private final GroupRepository groupRepository;
 
-    public ShoppingListServiceImpl(ShoppingListRepository shoppingListRepository, @Lazy ProductService productService) {
+    public ShoppingListServiceImpl(ShoppingListRepository shoppingListRepository, @Lazy ProductService productService, GroupRepository groupRepository) {
         this.shoppingListRepository = shoppingListRepository;
         this.productService = productService;
+        this.groupRepository = groupRepository;
     }
 
     @Override
-    public List<ShoppingList> getAll() {
-        return shoppingListRepository.findAll();
+    public List<ShoppingList> getAll(String code) {
+        Group group = groupRepository.getByCode(code);
+        return shoppingListRepository.findAllByGroup(group);
     }
 
     @Override
-    public List<ShoppingList> getAllSortedByCategoryShopping() {
-        return shoppingListRepository.getAllSortedByCategoryShopping();
+    public List<ShoppingList> getAllSortedByCategoryShopping(String code) {
+        return shoppingListRepository.getAllSortedByCategoryShopping(code);
     }
 
     @Override

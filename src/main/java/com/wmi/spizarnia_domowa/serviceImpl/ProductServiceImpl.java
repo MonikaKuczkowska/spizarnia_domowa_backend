@@ -8,6 +8,7 @@ import com.wmi.spizarnia_domowa.service.ShoppingListService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 import java.util.UUID;
@@ -19,20 +20,22 @@ public class ProductServiceImpl implements ProductService {
     private final AttributeRepository attributeRepository;
     private final AttributeService attributeService;
     private final ShoppingListService shoppingListService;
+    private final GroupRepository groupRepository;
 
     @Override
-    public List<Product> getAll() {
-        return productRepository.findAll();
+    public List<Product> getAll(String code) {
+        Group group = groupRepository.getByCode(code);
+        return productRepository.findAllByGroup(group);
     }
 
     @Override
-    public List<Product> getAllWithoutZero() {
-        return productRepository.getAllWithoutZero();
+    public List<Product> getAllWithoutZero(String code) {
+        return productRepository.getAllWithoutZero(code);
     }
 
     @Override
-    public List<Product> getAllSortedByCategoryProduct() {
-        return productRepository.getAllSortedByCategoryProduct();
+    public List<Product> getAllSortedByCategoryProduct(String code) {
+        return productRepository.getAllSortedByCategoryProduct(code);
     }
 
     @Override

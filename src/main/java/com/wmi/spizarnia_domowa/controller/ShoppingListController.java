@@ -17,13 +17,13 @@ public class ShoppingListController {
     private final ShoppingListService shoppingListService;
 
     @GetMapping("/all")
-    public List<ShoppingList> getAll() {
-        return shoppingListService.getAll();
+    public List<ShoppingList> getAll(@RequestParam String code) {
+        return shoppingListService.getAll(code);
     }
 
     @GetMapping("/all-sorted-category-shopping")
-    public List<ShoppingList> getAllSortedByCategoryShopping() {
-        return shoppingListService.getAllSortedByCategoryShopping();
+    public List<ShoppingList> getAllSortedByCategoryShopping(@RequestParam String code) {
+        return shoppingListService.getAllSortedByCategoryShopping(code);
     }
 
     @PostMapping

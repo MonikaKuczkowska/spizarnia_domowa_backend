@@ -1,6 +1,8 @@
 package com.wmi.spizarnia_domowa.serviceImpl;
 
+import com.wmi.spizarnia_domowa.model.Group;
 import com.wmi.spizarnia_domowa.model.Measure;
+import com.wmi.spizarnia_domowa.repository.GroupRepository;
 import com.wmi.spizarnia_domowa.repository.MeasureRepository;
 import com.wmi.spizarnia_domowa.service.MeasureService;
 import lombok.AllArgsConstructor;
@@ -13,10 +15,12 @@ import java.util.UUID;
 @AllArgsConstructor
 public class MeasureServiceImpl implements MeasureService {
     private final MeasureRepository measureRepository;
+    private final GroupRepository groupRepository;
 
     @Override
-    public List<Measure> getAll() {
-        return measureRepository.findAll();
+    public List<Measure> getAll(String code) {
+        Group group = groupRepository.getByCode(code);
+        return measureRepository.findAllByGroup(group);
     }
 
     @Override
