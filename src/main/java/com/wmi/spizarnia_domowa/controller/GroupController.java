@@ -14,8 +14,8 @@ public class GroupController {
     private GroupService groupService;
 
     @PostMapping
-    public Group addGroup(@RequestBody Group group) {
-        return groupService.save(group);
+    public Group addGroup(@RequestParam String name) {
+        return groupService.save(name);
     }
 
     @GetMapping

@@ -12,7 +12,9 @@ public class GroupServiceImpl implements GroupService {
     private final GroupRepository groupRepository;
 
     @Override
-    public Group save(Group group) {
+    public Group save(String name) {
+        Group group = new Group();
+        group.setName(name);
         return groupRepository.save(group);
     }
 
