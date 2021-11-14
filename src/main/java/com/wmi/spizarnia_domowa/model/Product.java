@@ -39,4 +39,6 @@ public class Product {
     private List<Attribute> attributeList;
     @OneToOne
     private Barcode barcode;
+    @OneToOne
+    private ExpirationDate expirationDate;
 }
