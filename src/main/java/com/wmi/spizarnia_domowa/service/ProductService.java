@@ -12,7 +12,9 @@ public interface ProductService {
     Product getById(UUID id);
     Product save(Product product);
     Product addAttribute(UUID id, String attributeName);
+    Product addBarcode(UUID id, String barcode, String note);
     Product deleteAttribute(UUID id, UUID attributeId);
+    Product deleteBarcode(UUID id, UUID barcodeId);
     Product updateQuantity(UUID id, int quantity);
     Product updateProduct(Product product);
     void decrementQuantity(UUID id);

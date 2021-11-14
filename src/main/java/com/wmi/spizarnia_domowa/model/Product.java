@@ -37,4 +37,6 @@ public class Product {
     @OneToMany
     @Nullable
     private List<Attribute> attributeList;
+    @OneToOne
+    private Barcode barcode;
 }

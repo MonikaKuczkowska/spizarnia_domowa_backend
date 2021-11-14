@@ -46,6 +46,11 @@ public class ProductController {
         return productService.addAttribute(id, attributeName);
     }
 
+    @PutMapping("/barcode/{id}")
+    public Product addBarcode(@PathVariable UUID id, @RequestParam String barcode, @RequestParam String note) {
+        return productService.addBarcode(id, barcode, note);
+    }
+
     @PutMapping("/quantity/{id}")
     public Product updateQuantity(@PathVariable UUID id, @RequestParam int quantity) {
         return productService.updateQuantity(id, quantity);
@@ -54,6 +59,11 @@ public class ProductController {
     @DeleteMapping("/attribute/{id}")
     public Product deleteAttribute(@PathVariable UUID id, @RequestParam UUID attributeId) {
         return productService.deleteAttribute(id, attributeId);
+    }
+
+    @DeleteMapping("/barcode/{id}")
+    public Product deleteBarcode(@PathVariable UUID id, @RequestParam UUID barcodeId) {
+        return productService.deleteBarcode(id, barcodeId);
     }
 
     @PutMapping("/all/{id}")
