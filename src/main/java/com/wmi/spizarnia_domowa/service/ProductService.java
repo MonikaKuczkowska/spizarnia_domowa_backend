@@ -14,7 +14,7 @@ public interface ProductService {
     Product save(Product product);
     Product addAttribute(UUID id, String attributeName);
     Product addBarcode(UUID id, String barcode, String note);
-    Product addExpirationDate(UUID id, LocalDate date, int days);
+    Product addExpirationDate(UUID id, LocalDate date, int days, String note);
     Product deleteAttribute(UUID id, UUID attributeId);
     Product deleteBarcode(UUID id, UUID barcodeId);
     Product deleteExpirationDate(UUID id, UUID expirationDateId);

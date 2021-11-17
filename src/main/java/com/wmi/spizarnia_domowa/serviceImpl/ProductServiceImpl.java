@@ -1,9 +1,7 @@
 package com.wmi.spizarnia_domowa.serviceImpl;
 
 import com.wmi.spizarnia_domowa.model.*;
-import com.wmi.spizarnia_domowa.repository.AttributeRepository;
-import com.wmi.spizarnia_domowa.repository.GroupRepository;
-import com.wmi.spizarnia_domowa.repository.ProductRepository;
+import com.wmi.spizarnia_domowa.repository.*;
 import com.wmi.spizarnia_domowa.service.*;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -19,7 +17,9 @@ public class ProductServiceImpl implements ProductService {
     private final ProductRepository productRepository;
     private final AttributeRepository attributeRepository;
     private final AttributeService attributeService;
+    private final BarcodeRepository barcodeRepository;
     private final BarcodeService barcodeService;
+    private final ExpirationDateRepository expirationDateRepository;
     private final ExpirationDateService expirationDateService;
     private final ShoppingListService shoppingListService;
     private final GroupRepository groupRepository;
@@ -61,19 +61,25 @@ public class ProductServiceImpl implements ProductService {
         return productRepository.save(product);
     }
 
+    @Transactional
     @Override
     public Product addBarcode(UUID id, String barcode, String note) {
         Barcode barcodeToSave = barcodeService.save(barcode, note);
         Product product = getById(id);
-        product.setBarcode(barcodeToSave);
+        List<Barcode> list = product.getBarcodeList();
+        list.add(barcodeToSave);
+        product.setBarcodeList(list);
         return productRepository.save(product);
     }
 
+    @Transactional
     @Override
-    public Product addExpirationDate(UUID id, LocalDate date, int days) {
-        ExpirationDate expirationDate = expirationDateService.save(date, days);
+    public Product addExpirationDate(UUID id, LocalDate date, int days, String note) {
+        ExpirationDate expirationDate = expirationDateService.save(date, days, note);
         Product product = getById(id);
-        product.setExpirationDate(expirationDate);
+        List<ExpirationDate> list = product.getExpirationDateList();
+        list.add(expirationDate);
+        product.setExpirationDateList(list);
         return productRepository.save(product);
     }
 
@@ -92,18 +98,24 @@ public class ProductServiceImpl implements ProductService {
     @Transactional
     @Override
     public Product deleteBarcode(UUID id, UUID barcodeId) {
+        Barcode barcode = barcodeRepository.getById(barcodeId);
         barcodeService.delete(barcodeId);
         Product product = getById(id);
-        product.setBarcode(null);
+        List<Barcode> list = product.getBarcodeList();
+        list.remove(barcode);
+        product.setBarcodeList(list);
         return productRepository.getById(id);
     }
 
     @Transactional
     @Override
     public Product deleteExpirationDate(UUID id, UUID expirationDateId) {
+        ExpirationDate expirationDate = expirationDateRepository.getById(expirationDateId);
         expirationDateService.delete(expirationDateId);
         Product product = getById(id);
-        product.setExpirationDate(null);
+        List<ExpirationDate> list = product.getExpirationDateList();
+        list.remove(expirationDate);
+        product.setExpirationDateList(list);
         return productRepository.getById(id);
     }
 

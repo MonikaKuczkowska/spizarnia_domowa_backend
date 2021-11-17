@@ -22,5 +22,6 @@ public class ExpirationDate {
     private UUID id = UUID.randomUUID();
     private LocalDate date;
     private int remainderDays;
+    private String note;
 }
 

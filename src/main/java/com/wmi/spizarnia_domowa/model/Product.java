@@ -37,8 +37,10 @@ public class Product {
     @OneToMany
     @Nullable
     private List<Attribute> attributeList;
-    @OneToOne
-    private Barcode barcode;
-    @OneToOne
-    private ExpirationDate expirationDate;
+    @OneToMany
+    @Nullable
+    private List<Barcode> barcodeList;
+    @OneToMany
+    @Nullable
+    private List<ExpirationDate> expirationDateList;
 }

@@ -54,8 +54,8 @@ public class ProductController {
     }
 
     @PutMapping("/exp-date/{id}")
-    public Product addExpirationDate(@PathVariable UUID id, @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date, @RequestParam int days) {
-        return productService.addExpirationDate(id, date, days);
+    public Product addExpirationDate(@PathVariable UUID id, @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date, @RequestParam int days, @RequestParam String note) {
+        return productService.addExpirationDate(id, date, days, note);
     }
 
     @PutMapping("/quantity/{id}")
