@@ -30,4 +30,9 @@ public class MeasureController {
     public Measure addMeasure(@RequestBody Measure measure) {
         return measureService.save(measure);
     }
+
+    @DeleteMapping
+    public void deleteMeasure(@RequestParam UUID id) {
+        measureService.delete(id);
+    }
 }

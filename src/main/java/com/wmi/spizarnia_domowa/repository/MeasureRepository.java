@@ -12,4 +12,6 @@ import java.util.UUID;
 public interface MeasureRepository extends JpaRepository<Measure, UUID> {
 
     List<Measure> findAllByGroup(Group group);
+
+    Measure findByGroupAndName(Group group, String name);
 }

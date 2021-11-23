@@ -9,4 +9,5 @@ public interface MeasureService {
     List<Measure> getAll(String code);
     Measure getById(UUID id);
     Measure save(Measure measure);
+    void delete(UUID id);
 }

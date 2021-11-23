@@ -26,9 +26,4 @@ public class CategoryProduct {
 
     @ManyToOne
     private Group group;
-
-    public CategoryProduct(UUID id, String name) {
-        this.id = id;
-        this.name = name;
-    }
 }
