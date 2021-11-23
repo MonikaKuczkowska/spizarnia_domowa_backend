@@ -20,7 +20,7 @@ import java.util.UUID;
 @Table(name = "Category_Product")
 public class CategoryProduct {
     @Id
-    @Type(type="org.hibernate.type.UUIDCharType")
+    @Type(type = "org.hibernate.type.UUIDCharType")
     private UUID id = UUID.randomUUID();
     private String name;
 

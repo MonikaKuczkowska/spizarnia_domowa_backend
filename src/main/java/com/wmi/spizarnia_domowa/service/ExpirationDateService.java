@@ -7,5 +7,6 @@ import java.util.UUID;
 
 public interface ExpirationDateService {
     ExpirationDate save(LocalDate date, int days, String note);
+
     void delete(UUID id);
 }

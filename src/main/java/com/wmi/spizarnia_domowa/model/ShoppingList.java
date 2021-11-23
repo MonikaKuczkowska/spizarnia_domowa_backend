@@ -17,7 +17,7 @@ import java.util.UUID;
 @Table(name = "Shopping_List")
 public class ShoppingList {
     @Id
-    @Type(type="org.hibernate.type.UUIDCharType")
+    @Type(type = "org.hibernate.type.UUIDCharType")
     private UUID id = UUID.randomUUID();
     private int quantityToBuy;
 

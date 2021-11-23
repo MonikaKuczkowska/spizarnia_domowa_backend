@@ -15,7 +15,7 @@ public class ExpirationDateServiceImpl implements ExpirationDateService {
     private final ExpirationDateRepository expirationDateRepository;
 
     @Override
-    public ExpirationDate save(LocalDate date, int days, String note){
+    public ExpirationDate save(LocalDate date, int days, String note) {
         ExpirationDate expirationDate = new ExpirationDate();
         expirationDate.setDate(date);
         expirationDate.setRemainderDays(days);

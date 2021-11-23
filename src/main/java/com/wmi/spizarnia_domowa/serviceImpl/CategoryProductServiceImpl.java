@@ -44,7 +44,7 @@ public class CategoryProductServiceImpl implements CategoryProductService {
         Group group = categoryProduct.getGroup();
         List<Product> products = productService.getAll(group.getCode());
         CategoryProduct defaultCategoryProduct = getDefaultByGroup(group);
-        for (Product product:products) {
+        for (Product product : products) {
             if (product.getCategoryProduct().getId() == id) {
                 product.setCategoryProduct(defaultCategoryProduct);
             }

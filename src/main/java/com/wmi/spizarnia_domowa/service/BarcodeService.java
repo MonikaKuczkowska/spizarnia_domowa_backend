@@ -6,5 +6,6 @@ import java.util.UUID;
 
 public interface BarcodeService {
     Barcode save(String barcode, String note);
+
     void delete(UUID id);
 }

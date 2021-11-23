@@ -6,7 +6,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.Type;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.time.LocalDate;
 import java.util.UUID;
 
@@ -18,7 +20,7 @@ import java.util.UUID;
 @Table(name = "Expiration_Date")
 public class ExpirationDate {
     @Id
-    @Type(type="org.hibernate.type.UUIDCharType")
+    @Type(type = "org.hibernate.type.UUIDCharType")
     private UUID id = UUID.randomUUID();
     private LocalDate date;
     private int remainderDays;

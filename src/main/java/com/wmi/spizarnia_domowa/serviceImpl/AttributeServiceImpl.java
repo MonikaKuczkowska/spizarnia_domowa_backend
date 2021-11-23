@@ -14,7 +14,7 @@ public class AttributeServiceImpl implements AttributeService {
     private final AttributeRepository attributeRepository;
 
     @Override
-    public Attribute save(String attributeName){
+    public Attribute save(String attributeName) {
         Attribute attribute = new Attribute();
         attribute.setName(attributeName);
         return attributeRepository.save(attribute);

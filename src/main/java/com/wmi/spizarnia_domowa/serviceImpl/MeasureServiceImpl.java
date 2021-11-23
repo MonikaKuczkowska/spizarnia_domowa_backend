@@ -42,7 +42,7 @@ public class MeasureServiceImpl implements MeasureService {
         Group group = measure.getGroup();
         List<Product> products = productService.getAll(group.getCode());
         Measure defaultMeasure = getDefaultByGroup(group);
-        for (Product product:products) {
+        for (Product product : products) {
             if (product.getMeasure().getId() == id) {
                 product.setMeasure(defaultMeasure);
             }

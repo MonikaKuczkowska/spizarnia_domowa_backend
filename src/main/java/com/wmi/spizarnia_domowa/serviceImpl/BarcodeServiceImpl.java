@@ -14,7 +14,7 @@ public class BarcodeServiceImpl implements BarcodeService {
     private final BarcodeRepository barcodeRepository;
 
     @Override
-    public Barcode save(String barcode, String note){
+    public Barcode save(String barcode, String note) {
         Barcode barcodeToSave = new Barcode();
         barcodeToSave.setBarcode(barcode);
         barcodeToSave.setNote(note);
