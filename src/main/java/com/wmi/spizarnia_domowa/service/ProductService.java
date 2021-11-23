@@ -21,4 +21,5 @@ public interface ProductService {
     Product updateQuantity(UUID id, int quantity);
     Product updateProduct(Product product);
     void decrementQuantity(UUID id);
+    void saveAll(List<Product> products);
 }

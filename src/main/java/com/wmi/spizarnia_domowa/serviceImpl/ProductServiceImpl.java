@@ -159,6 +159,11 @@ public class ProductServiceImpl implements ProductService {
         isUnderCountQuantity(id);
     }
 
+    @Override
+    public void saveAll(List<Product> products) {
+        productRepository.saveAll(products);
+    }
+
     private void isUnderCountQuantity(UUID id) {
         Product product = getById(id);
         if (product.isAutoPurchase()) {

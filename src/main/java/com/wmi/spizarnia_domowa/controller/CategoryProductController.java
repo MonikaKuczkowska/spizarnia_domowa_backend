@@ -30,4 +30,9 @@ public class CategoryProductController {
     public CategoryProduct addCategoryProduct(@RequestBody CategoryProduct categoryProduct) {
         return categoryProductService.save(categoryProduct);
     }
+
+    @DeleteMapping
+    public void deleteCategoryProduct(@RequestParam UUID id) {
+        categoryProductService.delete(id);
+    }
 }
