@@ -2,9 +2,11 @@ package com.wmi.spizarnia_domowa.serviceImpl;
 
 import com.wmi.spizarnia_domowa.model.CategoryShopping;
 import com.wmi.spizarnia_domowa.model.Group;
+import com.wmi.spizarnia_domowa.model.Product;
 import com.wmi.spizarnia_domowa.repository.CategoryShoppingRepository;
 import com.wmi.spizarnia_domowa.repository.GroupRepository;
 import com.wmi.spizarnia_domowa.service.CategoryShoppingService;
+import com.wmi.spizarnia_domowa.service.ProductService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +18,7 @@ import java.util.UUID;
 public class CategoryShoppingServiceImpl implements CategoryShoppingService {
     private final CategoryShoppingRepository categoryShoppingRepository;
     private final GroupRepository groupRepository;
+    private final ProductService productService;
 
     @Override
     public List<CategoryShopping> getAll(String code) {
@@ -31,5 +34,29 @@ public class CategoryShoppingServiceImpl implements CategoryShoppingService {
     @Override
     public CategoryShopping save(CategoryShopping categoryShopping) {
         return categoryShoppingRepository.save(categoryShopping);
+    }
+
+    @Override
+    public void delete(UUID id) {
+        CategoryShopping categoryShopping = categoryShoppingRepository.getById(id);
+        Group group = categoryShopping.getGroup();
+        List<Product> products = productService.getAll(group.getCode());
+        CategoryShopping defaultCategoryShopping = getDefaultByGroup(group);
+        for (Product product : products) {
+            if (product.getCategoryShopping().getId() == id) {
+                product.setCategoryShopping(defaultCategoryShopping);
+            }
+        }
+        productService.saveAll(products);
+        categoryShoppingRepository.delete(categoryShopping);
+    }
+
+    private CategoryShopping getByGroupAndName(Group group, String name) {
+        return categoryShoppingRepository.findByGroupAndName(group, name);
+    }
+
+    private CategoryShopping getDefaultByGroup(Group group) {
+        String defaultCategoryName = "Inne";
+        return getByGroupAndName(group, defaultCategoryName);
     }
 }

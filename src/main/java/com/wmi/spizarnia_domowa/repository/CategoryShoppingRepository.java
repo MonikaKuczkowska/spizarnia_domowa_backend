@@ -12,4 +12,6 @@ import java.util.UUID;
 public interface CategoryShoppingRepository extends JpaRepository<CategoryShopping, UUID> {
 
     List<CategoryShopping> findAllByGroup(Group group);
+
+    CategoryShopping findByGroupAndName(Group group, String name);
 }
