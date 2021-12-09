@@ -14,5 +14,4 @@ public interface CategoryProductRepository extends JpaRepository<CategoryProduct
     List<CategoryProduct> findAllByGroup(Group group);
 
     CategoryProduct findByGroupAndName(Group group, String name);
-
 }
