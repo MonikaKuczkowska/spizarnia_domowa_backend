@@ -36,4 +36,6 @@ public interface ProductService {
     void decrementQuantity(UUID id);
 
     void saveAll(List<Product> products);
+
+    void delete(UUID id);
 }

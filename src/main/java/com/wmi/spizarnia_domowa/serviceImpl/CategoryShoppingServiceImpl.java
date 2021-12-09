@@ -9,6 +9,7 @@ import com.wmi.spizarnia_domowa.service.CategoryShoppingService;
 import com.wmi.spizarnia_domowa.service.ProductService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.UUID;
@@ -36,6 +37,7 @@ public class CategoryShoppingServiceImpl implements CategoryShoppingService {
         return categoryShoppingRepository.save(categoryShopping);
     }
 
+    @Transactional
     @Override
     public void delete(UUID id) {
         CategoryShopping categoryShopping = categoryShoppingRepository.getById(id);

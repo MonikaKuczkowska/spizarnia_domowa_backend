@@ -164,6 +164,20 @@ public class ProductServiceImpl implements ProductService {
         productRepository.saveAll(products);
     }
 
+    @Transactional
+    @Override
+    public void delete(UUID id) {
+        Product product = productRepository.getById(id);
+        Group group = product.getGroup();
+        List<ShoppingList> shoppingList = shoppingListService.getAll(group.getCode());
+        for (ShoppingList shoppingListEntry : shoppingList) {
+            if(shoppingListEntry.getProduct() == product) {
+                shoppingListService.delete(shoppingListEntry.getId());
+            }
+        }
+        productRepository.deleteById(id);
+    }
+
     private void isUnderCountQuantity(UUID id) {
         Product product = getById(id);
         if (product.isAutoPurchase()) {

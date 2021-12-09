@@ -88,4 +88,9 @@ public class ProductController {
         return productService.updateProduct(product);
     }
 
+    @DeleteMapping()
+    public void deleteProduct(@RequestParam UUID id) {
+        productService.delete(id);
+    }
+
 }

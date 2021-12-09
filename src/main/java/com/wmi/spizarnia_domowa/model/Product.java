@@ -34,13 +34,13 @@ public class Product {
     private CategoryProduct categoryProduct;
     @ManyToOne
     private CategoryShopping categoryShopping;
-    @OneToMany
+    @OneToMany(cascade = CascadeType.REMOVE, orphanRemoval = true)
     @Nullable
     private List<Attribute> attributeList;
-    @OneToMany
+    @OneToMany(cascade = CascadeType.REMOVE, orphanRemoval = true)
     @Nullable
     private List<Barcode> barcodeList;
-    @OneToMany
+    @OneToMany(cascade = CascadeType.REMOVE, orphanRemoval = true)
     @Nullable
     private List<ExpirationDate> expirationDateList;
 }

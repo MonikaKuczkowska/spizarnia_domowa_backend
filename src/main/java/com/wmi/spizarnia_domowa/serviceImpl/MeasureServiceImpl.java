@@ -9,6 +9,7 @@ import com.wmi.spizarnia_domowa.service.MeasureService;
 import com.wmi.spizarnia_domowa.service.ProductService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.UUID;
@@ -36,6 +37,7 @@ public class MeasureServiceImpl implements MeasureService {
         return measureRepository.save(measure);
     }
 
+    @Transactional
     @Override
     public void delete(UUID id) {
         Measure measure = measureRepository.getById(id);
