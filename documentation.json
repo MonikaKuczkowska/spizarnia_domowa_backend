@@ -23,6 +23,10 @@
       "description": "Category Shopping Controller"
     },
     {
+      "name": "group-controller",
+      "description": "Group Controller"
+    },
+    {
       "name": "measure-controller",
       "description": "Measure Controller"
     },
@@ -117,6 +121,40 @@
             "description": "Not Found"
           }
         }
+      },
+      "delete": {
+        "tags": [
+          "category-product-controller"
+        ],
+        "summary": "deleteCategoryProduct",
+        "operationId": "deleteCategoryProductUsingDELETE",
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "id",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        }
       }
     },
     "/category-product/all": {
@@ -128,6 +166,15 @@
         "operationId": "getAllUsingGET",
         "produces": [
           "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "code",
+            "in": "query",
+            "description": "code",
+            "required": true,
+            "type": "string"
+          }
         ],
         "responses": {
           "200": {
@@ -232,6 +279,40 @@
             "description": "Not Found"
           }
         }
+      },
+      "delete": {
+        "tags": [
+          "category-shopping-controller"
+        ],
+        "summary": "deleteCategoryShopping",
+        "operationId": "deleteCategoryShoppingUsingDELETE",
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "id",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        }
       }
     },
     "/category-shopping/all": {
@@ -244,6 +325,15 @@
         "produces": [
           "*/*"
         ],
+        "parameters": [
+          {
+            "name": "code",
+            "in": "query",
+            "description": "code",
+            "required": true,
+            "type": "string"
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -253,6 +343,86 @@
                 "$ref": "#/definitions/CategoryShopping"
               }
             }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/groups": {
+      "get": {
+        "tags": [
+          "group-controller"
+        ],
+        "summary": "getByCode",
+        "operationId": "getByCodeUsingGET",
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "code",
+            "in": "query",
+            "description": "code",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Group"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "group-controller"
+        ],
+        "summary": "addGroup",
+        "operationId": "addGroupUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "description": "name",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Group"
+            }
+          },
+          "201": {
+            "description": "Created"
           },
           "401": {
             "description": "Unauthorized"
@@ -347,6 +517,40 @@
             "description": "Not Found"
           }
         }
+      },
+      "delete": {
+        "tags": [
+          "measure-controller"
+        ],
+        "summary": "deleteMeasure",
+        "operationId": "deleteMeasureUsingDELETE",
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "id",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        }
       }
     },
     "/measures/all": {
@@ -358,6 +562,15 @@
         "operationId": "getAllUsingGET_2",
         "produces": [
           "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "code",
+            "in": "query",
+            "description": "code",
+            "required": true,
+            "type": "string"
+          }
         ],
         "responses": {
           "200": {
@@ -462,6 +675,40 @@
             "description": "Not Found"
           }
         }
+      },
+      "delete": {
+        "tags": [
+          "product-controller"
+        ],
+        "summary": "deleteProduct",
+        "operationId": "deleteProductUsingDELETE",
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "id",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        }
       }
     },
     "/products/all": {
@@ -473,6 +720,15 @@
         "operationId": "getAllUsingGET_3",
         "produces": [
           "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "code",
+            "in": "query",
+            "description": "code",
+            "required": true,
+            "type": "string"
+          }
         ],
         "responses": {
           "200": {
@@ -506,6 +762,15 @@
         "produces": [
           "*/*"
         ],
+        "parameters": [
+          {
+            "name": "code",
+            "in": "query",
+            "description": "code",
+            "required": true,
+            "type": "string"
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -537,6 +802,15 @@
         "operationId": "getAllSortedByCategoryProductUsingGET",
         "produces": [
           "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "code",
+            "in": "query",
+            "description": "code",
+            "required": true,
+            "type": "string"
+          }
         ],
         "responses": {
           "200": {
@@ -667,6 +941,223 @@
             "name": "attributeId",
             "in": "query",
             "description": "attributeId",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Product"
+            }
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        }
+      }
+    },
+    "/products/barcode/{id}": {
+      "put": {
+        "tags": [
+          "product-controller"
+        ],
+        "summary": "addBarcode",
+        "operationId": "addBarcodeUsingPUT",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "barcode",
+            "in": "query",
+            "description": "barcode",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "name": "note",
+            "in": "query",
+            "description": "note",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Product"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "product-controller"
+        ],
+        "summary": "deleteBarcode",
+        "operationId": "deleteBarcodeUsingDELETE",
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "barcodeId",
+            "in": "query",
+            "description": "barcodeId",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Product"
+            }
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        }
+      }
+    },
+    "/products/exp-date/{id}": {
+      "put": {
+        "tags": [
+          "product-controller"
+        ],
+        "summary": "addExpirationDate",
+        "operationId": "addExpirationDateUsingPUT",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "date",
+            "in": "query",
+            "description": "date",
+            "required": true,
+            "type": "string",
+            "format": "date"
+          },
+          {
+            "name": "days",
+            "in": "query",
+            "description": "days",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "name": "note",
+            "in": "query",
+            "description": "note",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Product"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "product-controller"
+        ],
+        "summary": "deleteExpirationDate",
+        "operationId": "deleteExpirationDateUsingDELETE",
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "expirationDateId",
+            "in": "query",
+            "description": "expirationDateId",
             "required": true,
             "type": "string",
             "format": "uuid"
@@ -854,6 +1345,15 @@
         "produces": [
           "*/*"
         ],
+        "parameters": [
+          {
+            "name": "code",
+            "in": "query",
+            "description": "code",
+            "required": true,
+            "type": "string"
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -885,6 +1385,15 @@
         "operationId": "getAllSortedByCategoryShoppingUsingGET",
         "produces": [
           "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "code",
+            "in": "query",
+            "description": "code",
+            "required": true,
+            "type": "string"
+          }
         ],
         "responses": {
           "200": {
@@ -958,13 +1467,66 @@
         }
       }
     },
+    "/shopping-list/quantity/{id}": {
+      "put": {
+        "tags": [
+          "shopping-list-controller"
+        ],
+        "summary": "updateQuantity",
+        "operationId": "updateQuantityUsingPUT_1",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "name": "quantity",
+            "in": "query",
+            "description": "quantity",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ShoppingList"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
     "/shopping-list/{id}": {
       "delete": {
         "tags": [
           "shopping-list-controller"
         ],
         "summary": "deleteProduct",
-        "operationId": "deleteProductUsingDELETE",
+        "operationId": "deleteProductUsingDELETE_1",
         "produces": [
           "*/*"
         ],
@@ -1009,9 +1571,28 @@
       },
       "title": "Attribute"
     },
+    "Barcode": {
+      "type": "object",
+      "properties": {
+        "barcode": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "note": {
+          "type": "string"
+        }
+      },
+      "title": "Barcode"
+    },
     "CategoryProduct": {
       "type": "object",
       "properties": {
+        "group": {
+          "$ref": "#/definitions/Group"
+        },
         "id": {
           "type": "string",
           "format": "uuid"
@@ -1025,6 +1606,9 @@
     "CategoryShopping": {
       "type": "object",
       "properties": {
+        "group": {
+          "$ref": "#/definitions/Group"
+        },
         "id": {
           "type": "string",
           "format": "uuid"
@@ -1035,9 +1619,45 @@
       },
       "title": "CategoryShopping"
     },
+    "ExpirationDate": {
+      "type": "object",
+      "properties": {
+        "date": {
+          "type": "string",
+          "format": "date"
+        },
+        "id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "note": {
+          "type": "string"
+        },
+        "remainderDays": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "title": "ExpirationDate"
+    },
+    "Group": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "title": "Group"
+    },
     "Measure": {
       "type": "object",
       "properties": {
+        "group": {
+          "$ref": "#/definitions/Group"
+        },
         "id": {
           "type": "string",
           "format": "uuid"
@@ -1064,11 +1684,26 @@
           "type": "integer",
           "format": "int32"
         },
+        "barcodeList": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Barcode"
+          }
+        },
         "categoryProduct": {
           "$ref": "#/definitions/CategoryProduct"
         },
         "categoryShopping": {
           "$ref": "#/definitions/CategoryShopping"
+        },
+        "expirationDateList": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ExpirationDate"
+          }
+        },
+        "group": {
+          "$ref": "#/definitions/Group"
         },
         "id": {
           "type": "string",
@@ -1090,6 +1725,9 @@
     "ShoppingList": {
       "type": "object",
       "properties": {
+        "group": {
+          "$ref": "#/definitions/Group"
+        },
         "id": {
           "type": "string",
           "format": "uuid"
